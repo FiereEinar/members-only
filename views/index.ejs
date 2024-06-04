@@ -9,7 +9,7 @@
 		<header class="flex justify-between p-5">
 			<div class="text-2xl"><span class="text-blue-400">Members</span>Only</div>
 			<nav>
-				<% if (currentUser) { %> <% } else { %>
+				<% if (!currentUser) { %>
 				<div class="flex gap-5">
 					<a
 						class="transition-all rounded-sm py-1 px-3 hover:border hover:border-secondary-light border border-primary-dark flex justify-center items-center gap-1"
@@ -25,6 +25,25 @@
 						<img class="w-5 h-5" src="/images/icons/signup.png" alt="" />
 						<button>Sign Up</button>
 					</a>
+				</div>
+				<% } else { %>
+				<div class="flex gap-5">
+					<a
+						class="transition-all rounded-sm py-1 px-3 hover:border hover:border-secondary-light border border-primary-dark flex justify-center items-center gap-1"
+						href="/auth/log_out"
+					>
+						<img class="w-5 h-5" src="/images/icons/logout.png" alt="" />
+						<button>Log out</button>
+					</a>
+					<!-- TODO: implement user edit and add user profiles -->
+					<!-- <div class="flex gap-2">
+						<p class="m-auto"><%= currentUser.first_name %></p>
+						<img
+							class="w-8 h-8 m-auto rounded-full"
+							src="/images/default_user.jpg"
+							alt=""
+						/>
+					</div> -->
 				</div>
 				<% } %>
 			</nav>
