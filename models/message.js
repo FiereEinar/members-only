@@ -10,7 +10,7 @@ const MessageSchema = new Schema({
   creator: { type: Schema.Types.ObjectId, ref: 'User', required: true }
 });
 
-ItemSchema.virtual('date_added_formatted').get(function () {
+MessageSchema.virtual('date_added_formatted').get(function () {
   return DateTime.fromJSDate(this.date_added).toLocaleString(DateTime.DATE_MED);
 });
 
