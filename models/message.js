@@ -11,7 +11,7 @@ const MessageSchema = new Schema({
 });
 
 MessageSchema.virtual('date_added_formatted').get(function () {
-  return DateTime.fromJSDate(this.date_added).toLocaleString(DateTime.DATE_MED);
+  return DateTime.fromJSDate(this.date_added).toLocaleString(DateTime.DATETIME_FULL);
 });
 
 module.exports = mongoose.model('Message', MessageSchema);
