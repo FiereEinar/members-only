@@ -86,7 +86,7 @@ exports.log_in_get = asyncHandler(async (req, res) => {
 
 exports.log_in_post = passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: '/',
+  failureRedirect: '/auth/log_in',
   failureMessage: 'Invalid password or email used'
 });
 
