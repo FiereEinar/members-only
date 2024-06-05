@@ -96,3 +96,73 @@ exports.log_out_get = (req, res, next) => {
     res.redirect('/');
   });
 };
+
+exports.admin_get = (req, res) => {
+  if (!req.user) {
+    res.send('No user found');
+    return;
+  }
+
+  if (req.user.isAdmin) {
+    res.send('Already an admin');
+    return;
+  }
+
+  res.render('forms/admin_form', {
+    title: 'Become an Admin',
+    errors: []
+  });
+};
+
+exports.admin_post = asyncHandler(async (req, res) => {
+  if (req.body.secret_word !== process.env.ADMIN_PASS) {
+    res.render('forms/admin_form', {
+      title: 'Become an Admin',
+      errors: [{ msg: 'Incorrect secret word, please try again.' }]
+    });
+    return;
+  }
+
+  if (!req.user) {
+    res.send('No user found');
+    return;
+  }
+
+  await User.findByIdAndUpdate(req.user._id, { isAdmin: true }, {});
+  res.redirect('/');
+});
+
+exports.member_get = (req, res) => {
+  if (!req.user) {
+    res.send('No user found');
+    return;
+  }
+
+  if (req.user.isMember) {
+    res.send('Already a member');
+    return;
+  }
+
+  res.render('forms/member_form', {
+    title: 'Become a Member',
+    errors: []
+  });
+};
+
+exports.member_post = asyncHandler(async (req, res) => {
+  if (req.body.secret_word !== process.env.MEMBER_PASS) {
+    res.render('forms/member_form', {
+      title: 'Become a Member',
+      errors: [{ msg: 'Incorrect secret word, please try again.' }]
+    });
+    return;
+  }
+
+  if (!req.user) {
+    res.send('No user found');
+    return;
+  }
+
+  await User.findByIdAndUpdate(req.user._id, { isMember: true }, {});
+  res.redirect('/');
+});

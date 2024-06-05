@@ -14,6 +14,7 @@ exports.index = asyncHandler(async (req, res) => {
 exports.message_add_get = (req, res) => {
   if (!req.user) {
     res.send('No user found')
+    return;
   }
 
   res.render('forms/add_message', {
@@ -38,6 +39,7 @@ exports.message_add_post = [
 
     if (!req.user) {
       res.send('No user found')
+      return;
     }
 
     const message = new Message({
@@ -62,11 +64,13 @@ exports.message_add_post = [
 
 exports.message_delete_post = asyncHandler(async (req, res) => {
   if (!req.user) {
-    res.send('No user found')
+    res.send('No user found');
+    return;
   }
 
   if (!req.user.isAdmin) {
-    res.send('Unauthorized user')
+    res.send('Unauthorized user');
+    return;
   }
 
   await Message.findByIdAndDelete(req.params.id).exec();

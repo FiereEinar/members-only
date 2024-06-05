@@ -9,7 +9,9 @@
 	<body class="bg-primary-dark text-secondary-light">
 		<header class="flex justify-between p-5">
 			<div class="text-2xl">
-				<a href="/"> <span class="text-blue-400">Members</span>Only </a>
+				<a href="/">
+					<span title="imissher" class="text-blue-400">Members</span>Only
+				</a>
 			</div>
 		</header>
 		<main class="flex justify-center items-center flex-col">
@@ -18,34 +20,25 @@
 				method="POST"
 				class="border border-secondary-light rounded-md p-5 flex flex-col gap-3 w-96"
 			>
+				<div class="flex flex-col gap-2">
+					<p>
+						Enter the secret word for becoming a
+						<span title="secret: fiere">Member</span>. Hover around for hints.
+					</p>
+					<p>Members can view the creator of each messages.</p>
+				</div>
 				<!-- form entry fiels -->
 
 				<div class="flex flex-col gap-1">
-					<label for="email">Email:</label>
+					<label for="secret_word">Secret word:</label>
 					<input
 						class="p-1 bg-primary-dark border border-secondary-light rounded-sm text-white"
-						id="email"
-						name="email"
-						type="email"
+						id="secret_word"
+						name="secret_word"
+						type="text"
 						required
 					/>
 				</div>
-
-				<div class="flex flex-col gap-1">
-					<label for="password">Password:</label>
-					<input
-						class="p-1 bg-primary-dark border border-secondary-light rounded-sm text-white"
-						id="password"
-						name="password"
-						type="password"
-						required
-					/>
-				</div>
-
-				<p class="text-xs">
-					Don't have an account?
-					<a class="italic underline" href="/auth/sign_up">Sign up</a>
-				</p>
 
 				<!-- form buttons -->
 				<div class="flex justify-end gap-2">
