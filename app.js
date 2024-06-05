@@ -12,6 +12,7 @@ const passport = require('./utils/passport');
 // Routers
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
+const compression = require("compression");
 
 const app = express();
 
@@ -25,6 +26,8 @@ main().catch((err) => console.log(err));
 async function main() {
   await mongoose.connect(mongoDB);
 }
+
+app.use(compression()); // Compress all routes
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
