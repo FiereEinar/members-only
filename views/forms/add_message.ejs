@@ -19,71 +19,45 @@
 				class="border border-secondary-light rounded-md p-5 flex flex-col gap-3 w-96"
 			>
 				<!-- form entry fiels -->
+
 				<div class="flex flex-col gap-1">
-					<label for="first_name">First Name:</label>
+					<label for="title">Title:</label>
 					<input
 						class="p-1 bg-primary-dark border border-secondary-light rounded-sm text-white"
-						id="first_name"
-						name="first_name"
+						id="title"
+						name="title"
 						type="text"
+						value="<%= message===undefined ? '' : message.title %>"
 						required
-						value="<%= user===undefined ? '' : user.first_name %>"
 					/>
 				</div>
 
 				<div class="flex flex-col gap-1">
-					<label for="last_name">Last Name:</label>
+					<label for="message_text">Message:</label>
 					<input
 						class="p-1 bg-primary-dark border border-secondary-light rounded-sm text-white"
-						id="last_name"
-						name="last_name"
+						id="message_text"
+						name="message_text"
 						type="text"
-						required
-						value="<%= user===undefined ? '' : user.last_name %>"
-					/>
-				</div>
-
-				<div class="flex flex-col gap-1">
-					<label for="email">Email:</label>
-					<input
-						class="p-1 bg-primary-dark border border-secondary-light rounded-sm text-white"
-						id="email"
-						name="email"
-						type="email"
-						required
-						value="<%= user===undefined ? '' : user.email %>"
-					/>
-				</div>
-
-				<div class="flex flex-col gap-1">
-					<label for="password">Password:</label>
-					<input
-						class="p-1 bg-primary-dark border border-secondary-light rounded-sm text-white"
-						id="password"
-						name="password"
-						type="password"
+						value="<%= message===undefined ? '' : message.text %>"
 						required
 					/>
 				</div>
 
-				<div class="flex flex-col gap-1">
-					<label for="confirm_password">Confirm Password:</label>
-					<input
-						class="p-1 bg-primary-dark border border-secondary-light rounded-sm text-white"
-						id="confirm_password"
-						name="confirm_password"
-						type="password"
-						required
-					/>
-				</div>
+				<!-- hidden fields for user data -->
 
-				<p class="text-xs">
-					Already have an account?
-					<a class="italic underline" href="/auth/log_in">Log in</a>
-				</p>
+				<input type="hidden" name="creator" value="<%= currentUser._id %>" />
 
 				<!-- form buttons -->
 				<div class="flex justify-end gap-2">
+					<a href="javascript:history.back()">
+						<button
+							class="transition-all rounded-md py-1 px-4 hover:border hover:border-secondary-light border border-primary-dark flex justify-center items-center gap-1 text-white"
+							type="button"
+						>
+							Cancel
+						</button>
+					</a>
 					<button
 						class="transition-all rounded-md py-1 px-4 hover:border hover:border-blue-700 border border-primary-dark flex justify-center items-center gap-1 bg-blue-700 text-white"
 						type="submit"

@@ -59,7 +59,7 @@ exports.sign_up_post = [
       }
 
       if (isAlreadySignedIn) {
-        allErrors.push({ msg: 'Email already sign in, please proceed to log in' });
+        allErrors.push({ msg: 'Email already signed in, please proceed to log in' });
       }
 
       if (allErrors.length) {
