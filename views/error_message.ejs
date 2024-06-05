@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<link rel="stylesheet" href="/stylesheets/output.css" />
+		<link rel="icon" type="image/x-icon" href="/images/favicon.png" />
+	</head>
+
+	<body class="bg-primary-dark text-secondary-light">
+		<header class="flex justify-between p-5">
+			<div class="text-2xl">
+				<a href="/">
+					<span title="imissher" class="text-blue-400">Members</span>Only
+				</a>
+			</div>
+		</header>
+		<main class="flex justify-center items-center flex-col">
+			<h1 class="text-white text-3xl m-5"><%= title %></h1>
+			<section
+				class="border border-secondary-light rounded-md p-5 flex flex-col gap-3 w-96 justify-center items-center"
+			>
+				<p><%= message %></p>
+				<p class="text-xs">
+					Go back to
+					<a class="italic underline" href="/">Home page</a>
+				</p>
+			</section>
+		</main>
+	</body>
+</html>

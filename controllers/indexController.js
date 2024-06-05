@@ -13,7 +13,10 @@ exports.index = asyncHandler(async (req, res) => {
 
 exports.message_add_get = (req, res) => {
   if (!req.user) {
-    res.send('No user found')
+    res.render('error_message', {
+      title: "Oppps",
+      message: 'No user found, please log in or sign up first'
+    });
     return;
   }
 
@@ -38,7 +41,10 @@ exports.message_add_post = [
     const errors = validationResult(req);
 
     if (!req.user) {
-      res.send('No user found')
+      res.render('error_message', {
+        title: "Oppps",
+        message: 'No user found, please log in or sign up first'
+      });
       return;
     }
 
@@ -64,12 +70,18 @@ exports.message_add_post = [
 
 exports.message_delete_post = asyncHandler(async (req, res) => {
   if (!req.user) {
-    res.send('No user found');
+    res.render('error_message', {
+      title: "Oppps",
+      message: 'No user found, please log in or sign up first'
+    });
     return;
   }
 
   if (!req.user.isAdmin) {
-    res.send('Unauthorized user');
+    res.render('error_message', {
+      title: "Oppps",
+      message: 'You have have no access rights to delete a message'
+    });
     return;
   }
 

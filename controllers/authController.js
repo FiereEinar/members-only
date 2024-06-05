@@ -99,12 +99,18 @@ exports.log_out_get = (req, res, next) => {
 
 exports.admin_get = (req, res) => {
   if (!req.user) {
-    res.send('No user found');
+    res.render('error_message', {
+      title: "Oppps",
+      message: 'No user found, please log in or sign up first'
+    });
     return;
   }
 
   if (req.user.isAdmin) {
-    res.send('Already an admin');
+    res.render('error_message', {
+      title: "Oppps",
+      message: 'You are already an Admin'
+    });
     return;
   }
 
@@ -124,7 +130,10 @@ exports.admin_post = asyncHandler(async (req, res) => {
   }
 
   if (!req.user) {
-    res.send('No user found');
+    res.render('error_message', {
+      title: "Oppps",
+      message: 'No user found, please log in or sign up first'
+    });
     return;
   }
 
@@ -134,12 +143,18 @@ exports.admin_post = asyncHandler(async (req, res) => {
 
 exports.member_get = (req, res) => {
   if (!req.user) {
-    res.send('No user found');
+    res.render('error_message', {
+      title: "Oppps",
+      message: 'No user found, please log in or sign up first'
+    });
     return;
   }
 
   if (req.user.isMember) {
-    res.send('Already a member');
+    res.render('error_message', {
+      title: "Oppps",
+      message: 'You are already a Member'
+    });
     return;
   }
 
@@ -159,7 +174,10 @@ exports.member_post = asyncHandler(async (req, res) => {
   }
 
   if (!req.user) {
-    res.send('No user found');
+    res.render('error_message', {
+      title: "Oppps",
+      message: 'No user found, please log in or sign up first'
+    });
     return;
   }
 
