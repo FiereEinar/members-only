@@ -104,7 +104,9 @@ exports.message_delete_post = asyncHandler(async (req, res) => {
     return;
   }
 
-  await cloudinary.uploader.destroy(req.body.img_public_id);
+  if (req.body.img_public_id) {
+    await cloudinary.uploader.destroy(req.body.img_public_id);
+  }
 
   await Message.findByIdAndDelete(req.params.id).exec();
   res.redirect('/');
