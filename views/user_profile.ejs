@@ -15,8 +15,17 @@
 		<main class="flex justify-center items-center flex-col">
 			<h1 class="text-white text-3xl m-5"><%= title %></h1>
 			<section
-				class="bg-slate-900 shadow-xl border border-secondary-light rounded-md p-5 flex flex-col gap-3 w-96 justify-center items-center"
+				class="bg-slate-900 shadow-xl rounded-md p-5 flex flex-col gap-3 w-96 justify-center items-center"
 			>
+				<div class="flex justify-start w-full">
+					<a
+						class="transition-all rounded-sm py-1 px-3 flex justify-center items-center gap-1"
+						href="/"
+					>
+						<img class="w-5 h-5" src="/images/icons/back.png" alt="" />
+						<button class="hover:underline">Home</button>
+					</a>
+				</div>
 				<% if (user.imgURL) { %>
 				<img class="w-32 h-32 rounded-full" src="<%= user.imgURL %>" alt="" />
 				<% } else { %>
@@ -28,16 +37,43 @@
 				<% } %>
 				<p>Fullname: <%= user.fullname %></p>
 				<p>Email: <%= user.email %></p>
+
+				<!-- controls section -->
+				<!-- do not show when visiting other people's profile -->
+				<% if (currentUser._id.toString() === user._id.toString()) { %>
+				<hr class="border-secondary-light w-full" />
+				<!-- Becoming a MEMBER or ADMIN buttons section -->
+				<div class="flex gap-1 justify-center items-center flex-wrap">
+					<% if (!currentUser.isMember) { %>
+					<a
+						class="transition-all rounded-md py-1 px-3 hover:border hover:border-secondary-light border border-slate-900 flex justify-center items-center gap-1"
+						href="/auth/member"
+					>
+						<img class="w-5 h-5" src="/images/icons/member.png" alt="" />
+						<button>Become a Member</button>
+					</a>
+					<% } %> <% if (!currentUser.isAdmin) { %>
+					<a
+						class="transition-all rounded-md py-1 px-3 hover:border hover:border-secondary-light border border-slate-900 flex justify-center items-center gap-1"
+						href="/auth/admin"
+					>
+						<img class="w-5 h-5" src="/images/icons/admin.png" alt="" />
+						<button>Become an Admin</button>
+					</a>
+					<% } %>
+				</div>
+
 				<div>
 					<a href="/user/<%= user._id %>/edit">
 						<button
 							class="transition-all rounded-md py-1 px-4 hover:border hover:border-blue-700 border border-primary-dark flex justify-center items-center gap-1 bg-blue-700 text-white"
 							type="submit"
 						>
-							Edit
+							Edit Profile
 						</button>
 					</a>
 				</div>
+				<% } %>
 			</section>
 		</main>
 	</body>

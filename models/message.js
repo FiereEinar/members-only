@@ -7,7 +7,9 @@ const MessageSchema = new Schema({
   title: { type: String, required: true, maxLength: 30, minLength: 3 },
   text: { type: String, required: true, minLength: 3 },
   date_added: { type: Date, default: Date.now },
-  creator: { type: Schema.Types.ObjectId, ref: 'User', required: true }
+  creator: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+  imgURL: { type: String },
+  imgPublicID: { type: String }
 });
 
 MessageSchema.virtual('date_added_formatted').get(function () {

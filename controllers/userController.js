@@ -84,9 +84,9 @@ exports.user_edit_post = [
     }
 
     const editedUser = new User({
-      first_name: req.user.first_name,
-      last_name: req.user.last_name,
-      email: req.user.email,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      email: req.body.email,
       password: req.user.password,
       isAdmin: req.user.isAdmin,
       isMember: req.user.isMember,

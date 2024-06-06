@@ -15,6 +15,7 @@
 		<main class="flex justify-center items-center flex-col">
 			<h1 class="text-white text-3xl m-5"><%= title %></h1>
 			<form
+				enctype="multipart/form-data"
 				method="POST"
 				class="border border-secondary-light rounded-md p-5 flex flex-col gap-3 w-96"
 			>
@@ -41,6 +42,20 @@
 						type="text"
 						value="<%= message===undefined ? '' : message.text %>"
 						required
+					/>
+				</div>
+
+				<div class="flex flex-col gap-1">
+					<label for="message_pic">
+						Attach an image:
+						<span class="text-xs block"> (Optional) </span>
+					</label>
+					<input
+						class="p-1 bg-primary-dark border border-secondary-light rounded-sm text-white"
+						id="message_pic"
+						name="message_pic"
+						type="file"
+						accept="image/*"
 					/>
 				</div>
 
