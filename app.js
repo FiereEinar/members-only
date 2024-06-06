@@ -12,6 +12,7 @@ const passport = require('./utils/passport');
 // Routers
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
+const userRouter = require('./routes/user');
 const compression = require("compression");
 
 const app = express();
@@ -52,6 +53,7 @@ app.use((req, res, next) => {
 // Router paths
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
+app.use('/user', userRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

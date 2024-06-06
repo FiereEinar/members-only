@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<link rel="stylesheet" href="/stylesheets/output.css" />
+		<link rel="icon" type="image/x-icon" href="/images/favicon.png" />
+	</head>
+
+	<body class="bg-primary-dark text-secondary-light">
+		<header class="flex justify-between p-5">
+			<div class="text-2xl">
+				<a href="/"> <span class="text-blue-400">Members</span>Only </a>
+			</div>
+		</header>
+		<main class="flex justify-center items-center flex-col">
+			<h1 class="text-white text-3xl m-5"><%= title %></h1>
+			<form
+				enctype="multipart/form-data"
+				method="POST"
+				class="border border-secondary-light rounded-md p-5 flex flex-col gap-3 w-96"
+			>
+				<!-- form entry fiels -->
+				<div class="w-full flex items-center justify-center">
+					<% if (user.imgURL) { %>
+					<img class="w-32 h-32 rounded-full" src="<%= user.imgURL %>" alt="" />
+					<% } else { %>
+					<img
+						class="w-32 h-32 rounded-full"
+						src="/images/default_user.jpg"
+						alt=""
+					/>
+					<% } %>
+				</div>
+
+				<div class="flex flex-col gap-1">
+					<label for="profile_pic">
+						Profile picture:
+						<span class="text-xs block">
+							(leave empty to keep the previous profile)
+						</span>
+					</label>
+					<input
+						class="p-1 bg-primary-dark border border-secondary-light rounded-sm text-white"
+						id="profile_pic"
+						name="profile_pic"
+						type="file"
+						accept="image/*"
+					/>
+				</div>
+
+				<div class="flex justify-between">
+					<label for="remove_profile">Remove profile?</label>
+					<input
+						class="p-1 bg-primary-dark border border-secondary-light rounded-sm text-white"
+						id="remove_profile"
+						name="remove_profile"
+						type="checkbox"
+						value="true"
+					/>
+				</div>
+
+				<div class="flex flex-col gap-1">
+					<label for="first_name">First Name:</label>
+					<input
+						class="p-1 bg-primary-dark border border-secondary-light rounded-sm text-white"
+						id="first_name"
+						name="first_name"
+						type="text"
+						required
+						value="<%= user===undefined ? '' : user.first_name %>"
+					/>
+				</div>
+
+				<div class="flex flex-col gap-1">
+					<label for="last_name">Last Name:</label>
+					<input
+						class="p-1 bg-primary-dark border border-secondary-light rounded-sm text-white"
+						id="last_name"
+						name="last_name"
+						type="text"
+						required
+						value="<%= user===undefined ? '' : user.last_name %>"
+					/>
+				</div>
+
+				<div class="flex flex-col gap-1">
+					<label for="email">Email:</label>
+					<input
+						class="p-1 bg-primary-dark border border-secondary-light rounded-sm text-white"
+						id="email"
+						name="email"
+						type="email"
+						required
+						value="<%= user===undefined ? '' : user.email %>"
+					/>
+				</div>
+
+				<!-- form buttons -->
+
+				<div class="flex justify-end gap-2">
+					<a href="javascript:history.back()">
+						<button
+							class="transition-all rounded-md py-1 px-4 hover:border hover:border-secondary-light border border-primary-dark flex justify-center items-center gap-1 text-white"
+							type="button"
+						>
+							Cancel
+						</button>
+					</a>
+					<button
+						class="transition-all rounded-md py-1 px-4 hover:border hover:border-blue-700 border border-primary-dark flex justify-center items-center gap-1 bg-blue-700 text-white"
+						type="submit"
+					>
+						Submit
+					</button>
+				</div>
+			</form>
+			<% if (errors.length) { %>
+			<ul class="flex flex-col gap-1 p-3 items-center">
+				<% errors.forEach(error => { %>
+				<li class="text-red-500"><%= error.msg %></li>
+				<% }) %>
+			</ul>
+			<% } %>
+		</main>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<link rel="stylesheet" href="/stylesheets/output.css" />
+		<link rel="icon" type="image/x-icon" href="/images/favicon.png" />
+	</head>
+
+	<body class="bg-primary-dark text-secondary-light">
+		<header class="flex justify-between p-5">
+			<div class="text-2xl">
+				<a href="/"> <span class="text-blue-400">Members</span>Only </a>
+			</div>
+		</header>
+		<main class="flex justify-center items-center flex-col">
+			<h1 class="text-white text-3xl m-5"><%= title %></h1>
+			<section
+				class="bg-slate-900 shadow-xl border border-secondary-light rounded-md p-5 flex flex-col gap-3 w-96 justify-center items-center"
+			>
+				<% if (user.imgURL) { %>
+				<img class="w-32 h-32 rounded-full" src="<%= user.imgURL %>" alt="" />
+				<% } else { %>
+				<img
+					class="w-32 h-32 rounded-full"
+					src="/images/default_user.jpg"
+					alt=""
+				/>
+				<% } %>
+				<p>Fullname: <%= user.fullname %></p>
+				<p>Email: <%= user.email %></p>
+				<div>
+					<a href="/user/<%= user._id %>/edit">
+						<button
+							class="transition-all rounded-md py-1 px-4 hover:border hover:border-blue-700 border border-primary-dark flex justify-center items-center gap-1 bg-blue-700 text-white"
+							type="submit"
+						>
+							Edit
+						</button>
+					</a>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

@@ -8,7 +8,9 @@ const UserSchema = new Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   isAdmin: { type: Boolean, default: false },
-  isMember: { type: Boolean, default: false }
+  isMember: { type: Boolean, default: false },
+  imgURL: { type: String },
+  imgPublicID: { type: String }
 });
 
 UserSchema.virtual('fullname').get(function () {
