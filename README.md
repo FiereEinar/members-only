@@ -34,11 +34,13 @@ This project aims to provide practical experience with the following skills:
 - [express-async-handler](https://www.npmjs.com/package/express-async-handler) – Asynchronous exception-handling middleware.
 - [express-validator](https://www.npmjs.com/package/express-validator) – User input validation middleware.
 - [dotenv](https://www.npmjs.com/package/dotenv) – For keeping my database connection strings and API keys secret.
-- [luxon](https://www.npmjs.com/package/luxon) – library for working with dates and times in JavaScript.
+- [luxon](https://www.npmjs.com/package/luxon) – Library for working with dates and times in JavaScript.
+- [cloudinary](https://cloudinary.com/) – Used for uploading/storing images
+- [multer](https://www.npmjs.com/package/multer) – Node.js middleware for handling multipart/form-data, which is primarily used for uploading files.
 
 ## Secrets
 
 Please be responsible
 
-Member secret word - "`fiere`"
-Admin secret word - "`imissher`"
+- Member secret word - "`fiere`"
+- Admin secret word - "`imissher`"
