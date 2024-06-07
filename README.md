@@ -16,6 +16,7 @@ This project aims to provide practical experience with the following skills:
   - Developing controllers to update models and/or views in response to user input.
 - Building views and handling forms in Express using the PUG templating engine.
 - Deploying the application to production with security measures such as hiding keys using environment variables (`env`).
+- Managing image uploads for user profiles and images for posts with the help of [Cloudinary](https://cloudinary.com/).
 
 ## Technologies Used
 
